@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background Image Switcher</title>
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: url('image_1.jpg');
+            background-size: cover;
+            background-position: center;
+            transition: background-image 0.5s ease-in-out;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            font-size: 1.2rem;
+        }
+
+        #changeBackgroundBtn{
+          font-size: 10px;
+          width: 120px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">Background Image Switcher</h1>
+        <button id="changeBackgroundBtn">Change Background</button>
+        <p>Current Background: <span id="bgName">Image 1</span></p>
+    </div>
+
+    <script>
+
+        const backgrounds = [
+            { url: 'image_1.jpg', name: 'Image 1' },
+            { url: 'image_2.jpg', name: 'Image 2' },
+            { url: 'image_3.jpg', name: 'Image 3' },
+            { url: 'image_4.jpg', name: 'Image 4' },
+            { url: 'image_5.jpg', name: 'Image 5' },
+            { url: 'image_6.jpg', name: 'Image 6' },
+            { url: 'image_7.jpg', name: 'Image 7' },
+            { url: 'image_8.jpg', name: 'Image 8' },
+            { url: 'image_9.jpg', name: 'Image 9' },
+            { url: 'image_10.jpg', name: 'Image 10' }
+        ];
+
+        let currentIndex = 0;
+
+        const body = document.body;
+        const bgName = document.getElementById('bgName');
+        const changeBackgroundBtn = document.getElementById('changeBackgroundBtn');
+
+        function changeBackground() {
+            currentIndex = (currentIndex + 1) % backgrounds.length; 
+            body.style.backgroundImage = `url('${backgrounds[currentIndex].url}')`;
+            bgName.textContent = backgrounds[currentIndex].name; 
+        }
+
+        changeBackgroundBtn.addEventListener('click', changeBackground);
+    </script>
+</body>
+</html>
